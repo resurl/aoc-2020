@@ -1,4 +1,4 @@
-import timeit
+import parsing
 
 def Solution(arr):
     count = 0
@@ -29,22 +29,17 @@ def Solution2(arr):
 
     return count
     
-
-def readInput():
-    f = open('day2-inp.txt')
-    inp = [line.rstrip("\n") for line in f]
-    return inp
-
 def main():
-    inp = readInput()
+    inp = parsing.readInput('day2-inp.txt')
 
     SETUP_CODE = """
-from __main__ import readInput, Solution, Solution2
-inp = readInput()
+from __main__ import Solution, Solution2
+import parsing
+inp = parsing.readInput("day2-inp.txt")
 """
 
-    sol1_time = timeit.timeit(setup=SETUP_CODE, stmt="Solution(inp)", number=1000)
-    sol2_time = timeit.timeit(setup=SETUP_CODE, stmt="Solution2(inp)", number=1000)
+    sol1_time = parsing.timer("Solution(inp)", setup_code=SETUP_CODE, iters=1000)
+    sol2_time = parsing.timer("Solution2(inp)", setup_code=SETUP_CODE, iters=1000)
 
     print(f"Part 1: {Solution(inp)} done in {sol1_time}s")
     print(f"Part 2: {Solution2(inp)} done in {sol2_time}s")
