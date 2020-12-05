@@ -6,15 +6,17 @@ def Solution(arr):
     for line in arr:
         rowStart, rowEnd = 0, 127
         colStart, colEnd = 0, 7
+        rowMid = (rowStart+rowEnd)//2
+        colMid = (colStart+colEnd)//2 
         for ch in line:
             if ch == "B":
-                rowStart = (rowStart+rowEnd)//2
+                rowStart = rowMid
             elif ch == "F":
-                rowEnd = (rowStart+rowEnd)//2
+                rowEnd = rowMid
             elif ch == "R":
-                colStart = (colStart+colEnd)//2
+                colStart = colMid
             elif ch == "L":
-                colEnd = (colStart+colEnd)//2
+                colEnd = colMid
         seat = rowEnd * 8 + colEnd
         seats.append(seat)
         if seat > maxSeat:
@@ -22,13 +24,10 @@ def Solution(arr):
     return (maxSeat, seats)
 
 def Solution2(arr):
-    arr = sorted(arr)
-    for i in range(len(arr)-1):
-        if arr[i+1] - arr[i] == 2:
-            return arr[i] + 1
+    for seat in arr:
+        if (not (seat+1) in arr) and (seat + 2 in arr):
+            return seat + 1
     return -1 
-            
-            
 
 def main():
     inp = readInput("day5-inp.txt")
