@@ -57,7 +57,7 @@ def validateField(k,v):
         lambda x: int(x) >= 2010 and int(x) <= 2020,
         lambda x: int(x) >= 2020 and int(x) <= 2030,
         lambda x: (x[len(x)-2:] == "cm" or x[len(x)-2:] == "in")
-              and ((int(x[:len(x)-2]) >= 150 and int(x[:len(x)-2]) <= 193) if x[len(x)-2:] == "cm" else (int(x[:len(x)-2]) >= 59 and int(x[:len(x)-2]) <= 76)),
+              and ((int(x[:len(x)-2]) >= 150 and int(x[:len(x)-2]) <= 193) if x[len(x)-2:] == "cm" else (int(x[:len(x)-2]) >= 59 and int(x[:len(x)-2]) <= 76)), # im sorry its finals season
         lambda x: x[0] == "#" and len(x[1:]) == 6 and str(x[1:]).isalnum(),
         lambda x: x in {"amb","blu","brn","gry","grn","hzl","oth"},
         lambda x: len(x) == 9 and str(x).isnumeric(),
